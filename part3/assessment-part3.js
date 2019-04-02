@@ -13,7 +13,14 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-function callBinding(magicAnimals, updateAnimal, id) {}
+const callBinding = (magicAnimals, updateAnimal, id) => {
+	let res = magicAnimals.filter(animal => {
+		if (animal.id === id) {
+			return animal;
+		}
+	});
+	return updateAnimal.call(res[0], 'Trogdor');
+};
 
 // *************
 // * PROBLEM 2 *
@@ -27,6 +34,14 @@ function callBinding(magicAnimals, updateAnimal, id) {}
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
+const applyBinding = (magicAnimals, updateAnimal, id) => {
+	let res = magicAnimals.filter(animal => {
+		if (animal.id === id) {
+			return animal;
+		}
+	});
+	return updateAnimal.apply(res[0], ['being majestic', 'eating rainbows']);
+};
 
 // *************
 // * PROBLEM 3 *

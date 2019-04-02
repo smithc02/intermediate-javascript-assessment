@@ -7,34 +7,34 @@
 
 // Given the following nested functions:
 
-function daBears(){
-  var isFurry = true;
+function daBears() {
+	var isFurry = true;
 
-  function papaBear (){
-    var porridge = "Too Hot!";
-    var chair = "Too Big!";
-    var bed = "Too Hard!";
-    var feeling = "Angry";
+	function papaBear() {
+		var porridge = 'Too Hot!';
+		var chair = 'Too Big!';
+		var bed = 'Too Hard!';
+		var feeling = 'Angry';
 
-    function mamaBear(){
-      var porridge = "Too Cold!";
-      var bed = "Too Soft!";
+		function mamaBear() {
+			var porridge = 'Too Cold!';
+			var bed = 'Too Soft!';
 
-      function babyBear(){
-        var porridge = "Just right!";
-        var chair = "Just right!";
-        var bed = "Just right!";
-        var feeling = "Whiny";
-        var sleepy = "Very yes";
-      }
-    }
-  }
+			function babyBear() {
+				var porridge = 'Just right!';
+				var chair = 'Just right!';
+				var bed = 'Just right!';
+				var feeling = 'Whiny';
+				var sleepy = 'Very yes';
+			}
+		}
+	}
 
-  function goldilocks(){
-    var feeling = "Hungry";
-    var isFurry = false;
-    var isDinner = true;
-  }
+	function goldilocks() {
+		var feeling = 'Hungry';
+		var isFurry = false;
+		var isDinner = true;
+	}
 }
 
 // Remove entries from the following arrays until only correct answers remain.
@@ -43,28 +43,27 @@ function daBears(){
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = ['papaBear', 'mamaBear'];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ['goldilocks'];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ['mamaBear'];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ['daBears', 'papaBear', 'mamaBear', 'goldilocks'];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
-
+var fairyTale5 = ['daBears', 'papaBear', 'mamaBear', 'babyBear'];
 
 // *************
 // * PROBLEM 2 *
@@ -82,17 +81,23 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // "charger" once, and invoke it twice on "mustang".
 
 // CODE HERE...
-
-
-
-
+function Vehicle(gasRemaining) {
+	this.gasRemaining = 100;
+}
+Vehicle.prototype.drive = function() {
+	return (this.gasRemaining -= 25);
+};
+const charger = new Vehicle();
+charger.drive();
+const mustang = new Vehicle();
+mustang.drive();
+mustang.drive();
 
 // -----------------------------------------------------------------------------
 
 // *************
 // * PROBLEM 3 *
 // *************
-
 
 // For this problem, you will need to add a method to the String prototype named
 // "grammarPolice".  When called on a string, "grammarPolice" will return a new string
@@ -104,12 +109,20 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // Your method may be passed punctuation, numbers or other non-letter characters
 // and should neither modify them nor break when encountering them.
 
-
-
-
 // CODE HERE...
 
+// create new array, split set everything to lower case, then split it
+//iterate through the array and push each piece to the new array at each index, change the first character to uppercase, and then add back the rest of the pieces of the string.
+// then return the finished newArr and join everything so there are no blank spaces
 
+String.prototype.grammarPolice = function() {
+	let newArr = [];
+	let arr = this.toLowerCase().split(' ');
+	for (let i = 0; i < arr.length; i++) {
+		newArr.push(arr[i].charAt(0).toUpperCase() + arr[i].slice(1));
+	}
+	return newArr.join(' ');
+};
 
 // *************
 // * PROBLEM 4 *
@@ -126,8 +139,16 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // In all other cases, return "Different values"
 
 // CODE HERE...
-
-
+function valueType(arg1, arg2) {
+	if (arg1 === arg2) {
+		return 'Exactly the same';
+	}
+	if (arg1 == arg2) {
+		return 'Same value, different types';
+	} else {
+		return 'Different values';
+	}
+}
 
 // *************
 // * PROBLEM 5 *
@@ -137,7 +158,9 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // Jasmine will pass a promise into your function through that parameter.
 // Your function will need to handle that promise.
 // When your promise receives its results, set variable 'theAnswer' (seen below) equal to the result.
-
-var theAnswer = "Unknown";
+var theAnswer = 'Unknown';
+let promiseCatcher = par1 => {
+	par1.then(res => (theAnswer = res));
+};
 
 // CODE HERE...
